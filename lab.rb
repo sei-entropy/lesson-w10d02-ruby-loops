@@ -81,3 +81,20 @@
 # toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
 # puts flavors.product(toppings)
 
+
+#---------------------Exercise:Map------------------- 
+
+# 1/  Explore 1
+# whene use map change the index of array change to uppercase.
+
+# # Explore 2
+# change every value in array with the new one..
+
+# # Explore 3: Bang
+# map
+# will save all the index of cart array in a new array "uppercase" 
+# with the upcase effect,  without change the cart array
+
+# map! 
+# will return a new array and change the original one
+
