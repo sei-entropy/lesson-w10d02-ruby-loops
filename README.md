@@ -153,12 +153,18 @@ Use `each` to do the following...
 
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+   names.each do |i|
+   puts  "Hello" + " "+ i + "!"
+   end
   ```
 
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+   numbers.each do |i|
+     puts "#{i * i}"
+      end
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -167,6 +173,9 @@ Use `each` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+  fahrenheit_temps.each do |i|
+    p  (i - 32) * (5.to_f / 9.to_f)
+    end
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
@@ -174,6 +183,10 @@ Use `each` to do the following...
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
+  artists.each do |i|
+    ninja_turtles.push(i)
+    p ninja_turtles
+    end
   ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
@@ -239,7 +252,7 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
-
+no difference
 ```
 
 #### Explore 3: Bang
@@ -257,7 +270,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
-
+replace the old with the new
 ```
 
 ```rb
@@ -269,7 +282,8 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
-
+.map return new array without change 
+.map! return a new array
 ```
 
 ### Exercise: Practice Map (15 minutes)
@@ -280,7 +294,10 @@ Use `map` to do the following...
 
   ```ruby
   first_names = [ "Donald", "Daisy", "Daffy" ]
-
+  new_name = first_names.map do |name|
+     "#{name} Duck"
+      end
+      p new_name
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
   ```
 
@@ -288,7 +305,10 @@ Use `map` to do the following...
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
-
+  num = numbers.map do |i|
+    p "#{i*i}"
+    end
+    p num
   # => [1, 9, 81, 121, 10000]
   ```
 
@@ -298,6 +318,9 @@ Use `map` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
-
+    Celsius_temps = fahrenheit_temps.map do |i|
+      (i - 32) * (5.to_f / 9.to_f)
+      end
+      p Celsius_temps
   #=> [-89.2, -17.8, 0, 60, 100]
   ```
