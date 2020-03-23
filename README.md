@@ -153,21 +153,20 @@ Use `each` to do the following...
 
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
- names.each do |key , val |
-   p  "hello #{key}"
- end 
-
+  names.each do |key , val |
+  p  "hello #{key}"
+  end
   ```
 
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+  numbers.each do |key , val |
+  new_numbers = key**2
+  p new_numbers
+  end
 
-   numbers.each do |key , val |
-     new_numbers = key**2
-     p new_numbers
- end
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -176,13 +175,13 @@ Use `each` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+  c_temps=[]
+  fahrenheit_temps.each do |key|
+  c = (key - 32) * 5 / 9
+  c_temps.push(c)
+  end
+  p c_temps
 
-   c_temps=[]
-fahrenheit_temps.each do |key|
-     c = (key - 32) * 5 / 9
-     c_temps.push(c)
- end
- p c_temps
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
@@ -204,9 +203,8 @@ fahrenheit_temps.each do |key|
   toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
 
    flavors.each do |flavor|
- toppings.each {|topping| puts flavor +" " + topping}
- end 
-
+   toppings.each {|topping| puts flavor +" " + topping}
+   end 
   ```
 <details>
   <summary>
