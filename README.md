@@ -153,12 +153,20 @@ Use `each` to do the following...
 
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+
+  names.each do |name|
+  puts "Hello #{name}!"
+end
   ```
 
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+
+  numbers.each do |number|
+  puts "The squared value of #{number} is #{number**2}"
+end
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -167,6 +175,10 @@ Use `each` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+
+  fahrenheit_temps.each do |fahrenheit_temp|
+  puts "The Celsius value of #{fahrenheit_temp} is #{(fahrenheit_temp - 32) * 5 / 9}"
+end
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
@@ -174,6 +186,15 @@ Use `each` to do the following...
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
+
+  artists.each do |artist|
+  ninja_turtles << artist
+  puts "ninja_turtle: #{artist}!"
+end
+
+puts "--------------------------------"
+puts "artists: #{artists}"
+puts "ninja_turtles: #{ninja_turtles}"
   ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
@@ -181,6 +202,8 @@ Use `each` to do the following...
   ```ruby
   flavors = [ "vanilla", "chocolate", "strawberry", "butter pecan", "cookies and cream", "rainbow" ]
   toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
+
+  puts flavors.product(toppings)
   ```
 <details>
   <summary>
@@ -217,7 +240,8 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
-
+each does not change the value of the item in the array
+while map return the value after change them
 ```
 
 #### Explore 2
@@ -239,7 +263,7 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
-
+no difference
 ```
 
 #### Explore 3: Bang
@@ -257,7 +281,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
-
+it will rewrite the old variable value with the new one
 ```
 
 ```rb
@@ -269,7 +293,8 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
-
+map => return a new array without change the original array while 
+map! => return a new array and change the original one
 ```
 
 ### Exercise: Practice Map (15 minutes)
@@ -281,6 +306,10 @@ Use `map` to do the following...
   ```ruby
   first_names = [ "Donald", "Daisy", "Daffy" ]
 
+  new_arr = first_names.map do |i|
+  puts "#{i} Duck"
+end
+
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
   ```
 
@@ -288,6 +317,11 @@ Use `map` to do the following...
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+
+  squared_numbers= numbers.map do |num|
+    squared_num = num **2
+    puts squared_num
+end
 
   # => [1, 9, 81, 121, 10000]
   ```
@@ -298,6 +332,10 @@ Use `map` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+
+  fahrenheit_temps.map do |f|
+  puts  "#{(f - 32) * 5 / 9}"
+end
 
   #=> [-89.2, -17.8, 0, 60, 100]
   ```
