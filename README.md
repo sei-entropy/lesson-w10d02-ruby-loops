@@ -179,7 +179,7 @@ Use `each` to do the following...
 
    c_temps=[]
 fahrenheit_temps.each do |key|
-     c = (key - 32) * (5.to_f / 9.to_f)
+     c = (key - 32) * 5 / 9
      c_temps.push(c)
  end
  p c_temps
@@ -310,11 +310,10 @@ Use `map` to do the following...
   first_names = [ "Donald", "Daisy", "Daffy" ]
 
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
-name_with_duck = first_names.map do |name|
+new_name = first_names.map do |name|
 "#{name} Duck"
 end
-
-puts name_with_duck
+puts new_name
 
   ```
 
@@ -325,10 +324,10 @@ puts name_with_duck
 
   # => [1, 9, 81, 121, 10000]
 
-  squared_numbers=numbers.map do |number|
-  number ** 2
+  new_numbers=numbers.map do |num|
+  num ** 2
 end
-puts squared_numbers
+puts new_numbers
   ```
 
 3. Create an array with the Celsius values for these Fahrenheit values.
@@ -339,10 +338,9 @@ puts squared_numbers
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
 
   #=> [-89.2, -17.8, 0, 60, 100]
-
-  fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
-celsius_temp = fahrenheit_temps.map do |temp|
-(temp-32)*(5.to_f / 9.to_f)
+fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+c_temp = fahrenheit_temps.map do |key|
+(key-32)*5 / 9
 end
-puts celsius_temp
+puts c_temp
   ```
