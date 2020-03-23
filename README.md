@@ -153,12 +153,19 @@ Use `each` to do the following...
 
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+   names.each do |index|
+     puts "hello #{index}"
+      end
+
   ```
 
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
-  numbers = [ 1, 3, 9, 11, 100 ]
+ numbers = [ 1, 3, 9, 11, 100 ]
+numbers.each do |i|
+    puts i
+end
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -166,14 +173,21 @@ Use `each` to do the following...
   > Hint: `C = (F - 32) * (5 / 9)`
 
   ```ruby
-  fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+ fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+fahrenheit_temps.each do |fahrenheit_temp|
+  puts "#{fahrenheit_temp} is #{(fahrenheit_temp - 32) * 5 / 9}"
+end
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
 
   ```ruby
-  artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
-  ninja_turtles = []
+ ninja_turtles = []
+artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
+artists.each do |i|
+    ninja_turtles.push(i)
+end
+p  ninja_turtles
   ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
@@ -217,7 +231,7 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
-
+ map I took it uppercase because of that print as uppercase
 ```
 
 #### Explore 2
@@ -239,7 +253,7 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
-
+ There is no difference as a result only the style of writing of coding is changed from cart.each to  cart.map
 ```
 
 #### Explore 3: Bang
@@ -257,7 +271,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
-
+ .map! Is not equa
 ```
 
 ```rb
@@ -269,7 +283,8 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
-
+.map It is the print version of the uppercase
+.map! print all version With uppercase
 ```
 
 ### Exercise: Practice Map (15 minutes)
@@ -280,16 +295,18 @@ Use `map` to do the following...
 
   ```ruby
   first_names = [ "Donald", "Daisy", "Daffy" ]
-
-  #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
+ Duck= first_names.map do |i|
+  puts "#{i} Duck"
+end
   ```
 
 2. Create an array containing the squared values of every number in this array.
 
   ```ruby
-  numbers = [ 1, 3, 9, 11, 100 ]
-
-  # => [1, 9, 81, 121, 10000]
+numbers = [ 1, 3, 9, 11, 100 ]
+numbers.each do |i|
+    puts i**2
+end
   ```
 
 3. Create an array with the Celsius values for these Fahrenheit values.
@@ -297,7 +314,8 @@ Use `map` to do the following...
   > Hint: `C = (F - 32) * (5 / 9)`
 
   ```ruby
-  fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+ fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+cl_temps = fahrenheit_temps.map{|f|(f-32)*5/9}
+p cl_temps
 
-  #=> [-89.2, -17.8, 0, 60, 100]
   ```
