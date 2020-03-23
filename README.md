@@ -155,11 +155,28 @@ Use `each` to do the following...
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
   ```
 
+solution : 
+```ruby
+names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+names.each do |name| 
+    puts " Hello #{name} !"
+end
+
+```
+
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
   ```
+
+solution : 
+```ruby
+numbers = [ 1, 3, 9, 11, 100 ]
+numbers.each do |number|
+    puts " The squre of the number #{number} is #{number*number}"
+end
+```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
 
@@ -169,12 +186,34 @@ Use `each` to do the following...
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
   ```
 
+solution : 
+```ruby
+fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+
+fahrenheit_temps.each do |temp|
+
+    puts " The temps #{temp} in Celsius #{(temp - 32) * 5 / 9}"
+end
+
+```
+
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
 
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
   ```
+
+solution : 
+```ruby
+artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
+ninja_turtles = []
+artists.each do |artist_name| 
+    ninja_turtles.push(artist_name)
+end
+puts ninja_turtles
+
+```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
 
@@ -188,6 +227,18 @@ Use `each` to do the following...
   </summary>
   Use nested enumerable methods or check out <a href="http://apidock.com/ruby/Array/product">product</a>.
 </details>
+
+
+
+solution : 
+```ruby
+flavors = [ "vanilla", "chocolate", "strawberry", "butter pecan", "cookies and cream", "rainbow" ]
+  toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
+  flavors.each do 
+    puts flavors.product(toppings)
+  end
+
+```
 
 ### Map (30 minutes)
 
@@ -217,6 +268,8 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
+ the maps make a new array and save the new values to it... 
+ each just take the value of elements of the array 
 
 ```
 
@@ -239,6 +292,7 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
+ after we extract the array with each we saved the value in a new array. but the map is creating a new array 
 
 ```
 
@@ -257,6 +311,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
+the bang operator changes the value in its original value in the memory 
 
 ```
 
@@ -269,6 +324,10 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
+
+the uppercase only method for printing only the original is remaining lowercase
+when we use! operator the value changes in the original value in the memory 
+
 
 ```
 
@@ -284,6 +343,17 @@ Use `map` to do the following...
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
   ```
 
+solution : 
+```ruby
+
+names = [  "Donald", "Daisy", "Daffy" ]
+names.map do |name| 
+     new_names=name+" Duck"
+     puts new_names
+end
+
+```
+
 2. Create an array containing the squared values of every number in this array.
 
   ```ruby
@@ -291,6 +361,15 @@ Use `map` to do the following...
 
   # => [1, 9, 81, 121, 10000]
   ```
+
+solution : 
+```ruby
+numbers = [ 1, 3, 9, 11, 100 ]
+numbers.map do |number| 
+     new_numbers=number*number
+     puts new_numbers
+end
+```
 
 3. Create an array with the Celsius values for these Fahrenheit values.
 
@@ -301,3 +380,11 @@ Use `map` to do the following...
 
   #=> [-89.2, -17.8, 0, 60, 100]
   ```
+solution : 
+```ruby
+fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+fahrenheit_temps.map do |temps| 
+     new_temps=(temps - 32) * 5 / 9
+     puts new_temps
+end
+```
