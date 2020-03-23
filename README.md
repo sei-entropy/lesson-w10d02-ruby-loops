@@ -153,12 +153,21 @@ Use `each` to do the following...
 
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+
+names.each do |name|
+ puts "hello #{name}"
+end 
+
   ```
 
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+
+numbers.each do |num|
+    puts num * 2
+end
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -167,13 +176,21 @@ Use `each` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+
+fahrenheit_temps.each do |num|
+    puts ((num-32) * (5/9))
+end
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
 
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
-  ninja_turtles = []
+ninja_turtles = []
+
+artists.each do |name|
+    ninja_turtles.push(name)  
+end
   ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
@@ -217,6 +234,7 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
+ each like for or while but map take copy of the array
 
 ```
 
@@ -239,6 +257,7 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
+each like for or while but map take copy of the array
 
 ```
 
@@ -257,7 +276,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
-
+  safe
 ```
 
 ```rb
@@ -269,7 +288,7 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
-
+ map! safe change in prevese one 
 ```
 
 ### Exercise: Practice Map (15 minutes)
@@ -282,6 +301,15 @@ Use `map` to do the following...
   first_names = [ "Donald", "Daisy", "Daffy" ]
 
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
+
+  first_names = [ "Donald", "Daisy", "Daffy" ]
+
+new_array = first_names.map {|name|
+    name = name+" duck" }
+
+    puts first_names
+puts new_array
+
   ```
 
 2. Create an array containing the squared values of every number in this array.
@@ -290,6 +318,14 @@ Use `map` to do the following...
   numbers = [ 1, 3, 9, 11, 100 ]
 
   # => [1, 9, 81, 121, 10000]
+
+numbers = [ 1, 3, 9, 11, 100 ]
+
+new_number = numbers.map {|num| num*num}
+
+puts numbers
+puts new_number
+
   ```
 
 3. Create an array with the Celsius values for these Fahrenheit values.
@@ -298,6 +334,11 @@ Use `map` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+  
+celsius = fahrenheit_temps.map{|num| ((num-32) * (5/9))}
+
+puts fahrenheit_temps
+puts celsius
 
   #=> [-89.2, -17.8, 0, 60, 100]
   ```
