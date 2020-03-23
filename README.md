@@ -217,6 +217,8 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
+each iterate over arry without make copy of it
+Map iterate over arry and make a copy of it
 
 ```
 
@@ -239,7 +241,8 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
-
+map make copy 
+each we have to put push
 ```
 
 #### Explore 3: Bang
@@ -269,7 +272,7 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
-
+band operator changing the original val
 ```
 
 ### Exercise: Practice Map (15 minutes)
