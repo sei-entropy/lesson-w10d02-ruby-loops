@@ -153,12 +153,18 @@ Use `each` to do the following...
 
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+  names.each  do |name|
+      p "hello #{name}"
+  end
   ```
 
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+  numbers.each do |num|
+     p num**2
+  end
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -167,6 +173,9 @@ Use `each` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+  fahrenheit_temps.each do |num|
+    p (num - 32) * 5 / 9
+   end 
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
@@ -174,13 +183,20 @@ Use `each` to do the following...
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
+ artists.each do |val|
+     ninja_turtles.push(val)
+  end 
+  p ninja_turtles
+
   ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
-
   ```ruby
   flavors = [ "vanilla", "chocolate", "strawberry", "butter pecan", "cookies and cream", "rainbow" ]
   toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
+  flavors.each do 
+    p flavors.product(toppings)
+end 
   ```
 <details>
   <summary>
@@ -217,6 +233,8 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
+the first one with each print uppercase  without changeing the value in the array 
+the second one print uppercase with upcase
 
 ```
 
@@ -239,7 +257,7 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
-
+both are the same 
 ```
 
 #### Explore 3: Bang
@@ -282,6 +300,9 @@ Use `map` to do the following...
   first_names = [ "Donald", "Daisy", "Daffy" ]
 
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
+  full_name = first_names.map{|name| "#{name} Duck" }
+    p full_name
+  
   ```
 
 2. Create an array containing the squared values of every number in this array.
@@ -290,6 +311,9 @@ Use `map` to do the following...
   numbers = [ 1, 3, 9, 11, 100 ]
 
   # => [1, 9, 81, 121, 10000]
+  squared_values = numbers.map{|num| num**2 }
+    p squared_values
+
   ```
 
 3. Create an array with the Celsius values for these Fahrenheit values.
@@ -300,4 +324,6 @@ Use `map` to do the following...
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
 
   #=> [-89.2, -17.8, 0, 60, 100]
+  celsius_values = fahrenheit_temps.map{|num| (num - 32) * 5 / 9 }
+     p celsius_values
   ```
