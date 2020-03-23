@@ -178,7 +178,7 @@ end
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
 
 fahrenheit_temps.each do |num|
-    puts ((num-32) * (5/9))
+    puts ((num-32) * 5/9)
 end
   ```
 
@@ -335,7 +335,7 @@ puts new_number
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
   
-celsius = fahrenheit_temps.map{|num| ((num-32) * (5/9))}
+celsius = fahrenheit_temps.map{|num| ((num-32) * 5/9)}
 
 puts fahrenheit_temps
 puts celsius
