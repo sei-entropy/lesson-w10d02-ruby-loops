@@ -217,6 +217,7 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
+The difference becusde int the first use each and the second use map 
 
 ```
 
@@ -239,7 +240,7 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
-
+no difference the same result 
 ```
 
 #### Explore 3: Bang
@@ -257,7 +258,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
-
+All the output will be in uppercase becuse when using ! the value of orginal will chabge to the new 
 ```
 
 ```rb
@@ -269,6 +270,7 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
+map will not change the orginal value unlike map!
 
 ```
 
