@@ -189,11 +189,10 @@ Use `each` to do the following...
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
-
- artists.each do |key |
- ninja_turtles.push(key)
- end
- p ninja_turtles
+  artists.each do |key |
+  ninja_turtles.push(key)
+  end
+  p ninja_turtles
   ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
