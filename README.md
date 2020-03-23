@@ -153,12 +153,14 @@ Use `each` to do the following...
 
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+  names.each {|name| p "hello #{name}"}
   ```
 
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+  numbers.each {|num| p "#{num**2}" }
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -167,6 +169,10 @@ Use `each` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+  fahrenheit_temps.each do |temp| 
+  new_fa =(temp-32) * 5/9
+  puts "#{(new_fa)}" 
+  end
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
@@ -174,6 +180,11 @@ Use `each` to do the following...
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
+  ninja_turtles = []
+  artists.each do |art|
+  ninja_turtles.push(art)
+  end
+   puts ninja_turtles
   ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
@@ -217,7 +228,8 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
-
+the map will return new array with values 
+for each will show temp value for current values
 ```
 
 #### Explore 2
@@ -236,10 +248,10 @@ cart = ["shoes", "watch", "computer"]
 uppercase = cart.map{|product| product.upcase }
 puts uppercase.join(", ")
 ```
-
 What is the difference in the result of these two snippets?
 ```
-
+we dont to create array to push the new values in map 
+beacuse it create new array with new values
 ```
 
 #### Explore 3: Bang
@@ -257,7 +269,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
-
+mean will change the source of the data
 ```
 
 ```rb
@@ -269,7 +281,8 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
-
+if use ! it will modifie the orginle array 
+without ! will not update the data of array
 ```
 
 ### Exercise: Practice Map (15 minutes)
@@ -282,6 +295,10 @@ Use `map` to do the following...
   first_names = [ "Donald", "Daisy", "Daffy" ]
 
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
+    first_names.map do |name|
+    full_names = name+" Duck"
+    p full_names
+ end
   ```
 
 2. Create an array containing the squared values of every number in this array.
@@ -290,6 +307,10 @@ Use `map` to do the following...
   numbers = [ 1, 3, 9, 11, 100 ]
 
   # => [1, 9, 81, 121, 10000]
+    numbers = [ 1, 3, 9, 11, 100 ]
+    numbers.map do |num|
+    p num**2
+    end
   ```
 
 3. Create an array with the Celsius values for these Fahrenheit values.
@@ -300,4 +321,5 @@ Use `map` to do the following...
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
 
   #=> [-89.2, -17.8, 0, 60, 100]
+  fahrenheit_temps.map {|tem| p (tem-32) * 5/9 }
   ```
