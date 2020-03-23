@@ -26,7 +26,7 @@ We learned how to iterate over collections in JavaScript using loops. Now we're 
 In JS if we wanted to print numbers 0 through 3 we would:
 
 ```javascript
-for(var i = 0; i < 3; i++) {
+for (var i = 0; i < 3; i++) {
   console.log(i);
 }
 // > 0
@@ -43,7 +43,7 @@ In Ruby this is much cleaner:
 # > 2
 ```
 
-`times` is a method that takes a _block_.  A block is just a chunk of code that may or may not take arguments.  The closest thing to a block in ES6-land would be an (anonymous) arrow function.
+`times` is a method that takes a _block_. A block is just a chunk of code that may or may not take arguments. The closest thing to a block in ES6-land would be an (anonymous) arrow function.
 
 We also have `.upto` and `.downto` methods for looping.
 
@@ -111,7 +111,6 @@ puts "You made it out! Congrats!"
 
 #### [until](https://ruby-doc.org/core-2.6.1/doc/syntax/control_expressions_rdoc.html#label-until+Loop)
 
-
 ```rb
 input = ""
 puts "You must guess the Magic Words to exit the while loop!"
@@ -139,11 +138,11 @@ puts "You made it out! Congrats!"
 ```rb
 users = ["Alice", "Bob", "Carol"]
 users.length.times do |index|
-  puts users[index]  
+  puts users[index]
 end
 ```
-> [**Further Reading on Ruby loops**](http://www.tutorialspoint.com/ruby/ruby_loops.htm)
 
+> [**Further Reading on Ruby loops**](http://www.tutorialspoint.com/ruby/ruby_loops.htm)
 
 ### Exercise: Practice Each (15 minutes)
 
@@ -153,12 +152,14 @@ Use `each` to do the following...
 
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+  names.each { |n| puts "Hi #{n}" }
   ```
 
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+  numbers.each { |n| puts "hi #{n * n}"  }
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -167,6 +168,8 @@ Use `each` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+  fahrenheit_temps.each { |n| puts "celsius #{(n - 32) * 5 / 9}"  }
+
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
@@ -174,6 +177,8 @@ Use `each` to do the following...
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
+  artists.each { |n| puts "intsert #{ninja_turtles.push(n)}"  }
+  puts ninja_turtles
   ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
@@ -182,12 +187,13 @@ Use `each` to do the following...
   flavors = [ "vanilla", "chocolate", "strawberry", "butter pecan", "cookies and cream", "rainbow" ]
   toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
   ```
-<details>
-  <summary>
-    Hint
-  </summary>
-  Use nested enumerable methods or check out <a href="http://apidock.com/ruby/Array/product">product</a>.
-</details>
+
+  <details>
+    <summary>
+      Hint
+    </summary>
+    Use nested enumerable methods or check out <a href="http://apidock.com/ruby/Array/product">product</a>.
+  </details>
 
 ### Map (30 minutes)
 
@@ -216,8 +222,9 @@ puts uppercase.join(", ")
 ```
 
 How would you explain the difference in the result?
-```
 
+```
+each didn't uppercase each element
 ```
 
 #### Explore 2
@@ -238,6 +245,7 @@ puts uppercase.join(", ")
 ```
 
 What is the difference in the result of these two snippets?
+
 ```
 
 ```
@@ -256,8 +264,9 @@ puts uppercase
 Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
-```
 
+```
+edit the object it's called on
 ```
 
 ```rb
@@ -268,36 +277,56 @@ puts uppercase
 ```
 
 What's the difference between `.map` and `.map!`?
+
 ```
+!map changed the state, so that display all uppercase
 
 ```
 
 ### Exercise: Practice Map (15 minutes)
 
-Use `map` to do the following...  
+Use `map` to do the following...
 
 1. Create an array that appends "Duck" to everybody in this array of first names
 
-  ```ruby
-  first_names = [ "Donald", "Daisy", "Daffy" ]
+```ruby
+first_names = [ "Donald", "Daisy", "Daffy" ]
 
-  #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
-  ```
+#= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
+
+ all_names = first_names.map do |name|
+  names = name + " Duck"
+  names
+end
+puts all_names.join(", ")
+```
 
 2. Create an array containing the squared values of every number in this array.
 
-  ```ruby
-  numbers = [ 1, 3, 9, 11, 100 ]
+```ruby
+numbers = [ 1, 3, 9, 11, 100 ]
 
-  # => [1, 9, 81, 121, 10000]
-  ```
+# => [1, 9, 81, 121, 10000]
+
+
+  all_numbers = numbers.map do |num|
+    s_names = num * num
+    s_names
+end
+  puts all_numbers.join(", ")
+```
 
 3. Create an array with the Celsius values for these Fahrenheit values.
 
-  > Hint: `C = (F - 32) * (5 / 9)`
+> Hint: `C = (F - 32) * (5 / 9)`
 
-  ```ruby
-  fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+```ruby
+fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
 
-  #=> [-89.2, -17.8, 0, 60, 100]
-  ```
+#=> [-89.2, -17.8, 0, 60, 100]
+
+ all_fahrenheit = fahrenheit_temps.map do |f|
+    celsius = (f - 32) * 5 / 9
+  end
+  puts all_fahrenheit.join(", ")
+```
