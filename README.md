@@ -151,30 +151,47 @@ Use `each` to do the following...
 
 - Say hello to everybody in the below array of names (sample output: `Hello Donald!`).
 
-  ```ruby
+  ```
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+  names.each do |name|
+  p "Hello #{name}"
+  end
+
   ```
 
 - Print out the squared values of every number in this numbers array.
 
-  ```ruby
-  numbers = [ 1, 3, 9, 11, 100 ]
+  ```
+numbers = [ 1, 3, 9, 11, 100 ]  
+numbers.each do |number|
+  p number*number
+end
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
 
   > Hint: `C = (F - 32) * (5 / 9)`
 
-  ```ruby
-  fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+ ```
+   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+
+ fahrenheit_temps.each do |number|
+     puts  ((nummber-32) * (5/9)) "C"
+ end
+   ```
+
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
 
-  ```ruby
-  artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
-  ninja_turtles = []
   ```
+  artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
+ 
+ ninja_turtles = []
+ artists.each do |name|
+ ninja_turtles.push(name)  
+ end
+ ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
 
@@ -217,7 +234,7 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
-
+Map will Create a new array that will hold the result on it  but each not! , 
 ```
 
 #### Explore 2
@@ -239,6 +256,7 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
+Same result
 
 ```
 
@@ -257,6 +275,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
+its change the original data"Value" not the copy of it 
 
 ```
 
@@ -269,6 +288,7 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
+ map! change the original content of cart to be on upper Case  but map take a copy .
 
 ```
 
@@ -280,7 +300,8 @@ Use `map` to do the following...
 
   ```ruby
   first_names = [ "Donald", "Daisy", "Daffy" ]
-
+new = first_names.map{|name|name=name+"Duck"}
+puts new 
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
   ```
 
@@ -288,6 +309,7 @@ Use `map` to do the following...
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+  seq= numbers.map{|num| num*num}
 
   # => [1, 9, 81, 121, 10000]
   ```
@@ -298,6 +320,8 @@ Use `map` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+  c_temp = fahrenheit_temps.map{|temp|(temp-32)*5/9}
+  p c_temp
 
   #=> [-89.2, -17.8, 0, 60, 100]
   ```
