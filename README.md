@@ -154,13 +154,13 @@ Use `each` to do the following...
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
   ```
-
+<!-- names.each  do |name| puts "Hello  #{name}!" end -->
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
   ```
-
+<!-- numbers.each do |num| puts "#{num * num }" end -->
 - Print out the Celsius values for an array containing Fahrenheit values.
 
   > Hint: `C = (F - 32) * (5 / 9)`
@@ -168,14 +168,18 @@ Use `each` to do the following...
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
   ```
-
+<!-- fahrenheit_temps.each do |f| puts ((f-32) * 5/9) end -->
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
 
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
   ```
+<!-- artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
+ninja_turtles = []
+ninja_turtles = artists.map do |art| "#{art}" end
 
+  p ninja_turtles -->
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
 
   ```ruby
