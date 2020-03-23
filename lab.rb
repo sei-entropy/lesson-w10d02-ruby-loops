@@ -98,3 +98,29 @@
 # map! 
 # will return a new array and change the original one
 
+#---------------------Exercise:Practice Map------------------- 
+
+# 1/ Create an array that appends "Duck" to everybody in this array of first names
+
+first_names = [ "Donald", "Daisy", "Daffy" ]
+# array = first_names.map do |i|
+#   puts "#{i} Duck"
+# end
+
+# 2/ Create an array containing the squared values of every number in this array.
+
+numbers = [ 1, 3, 9, 11, 100 ]
+square_num= numbers.map do |num|
+    square_num = num **2
+end
+# puts numbers
+# puts square_num
+
+# 3/ Create an array with the Celsius values for these Fahrenheit values.
+
+fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+celsius_temps = fahrenheit_temps.map do |f|
+celsius_temps = (f - 32) * 5 / 9
+end
+# puts fahrenheit_temps
+# puts celsius_temps
