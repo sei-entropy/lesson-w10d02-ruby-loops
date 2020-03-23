@@ -100,24 +100,29 @@ end
 #### [while](https://ruby-doc.org/core-2.6.1/doc/syntax/control_expressions_rdoc.html#label-while+Loop)
 
 ```rb
+# Initialize a variable to hold user input for the magic word
 input = ""
 puts "You must guess the Magic Words to exit the while loop!"
-while input != "Magic Words" do
-  puts "What are the Magic Words?"
-  input = gets.chomp
+# while the user's input doesn't equal "Magic Words" loop again
+while input != "Magic Words".downcase do 
+    puts "What are the Magic Words?"
+    # Get the user's input
+    input = gets.chomp.downcase
 end
-puts "You made it out! Congrats!"
+# Print this after the loop finishes
+puts "You made it out! Congrats"
 ```
 
 #### [until](https://ruby-doc.org/core-2.6.1/doc/syntax/control_expressions_rdoc.html#label-until+Loop)
 
-
 ```rb
+# Initialize a variable to hold user input for the magic word
 input = ""
 puts "You must guess the Magic Words to exit the while loop!"
-until input == "Magic Words" do
-  puts "What are the Magic Words?"
-  input = gets.chomp
+# if the input matches "Magic Words" exit from the loop
+until input == "Magic Words".downcase do
+    puts "What are the Magic Words?"
+    input = gets.chomp.downcase
 end
 puts "You made it out! Congrats!"
 ```
@@ -126,10 +131,11 @@ puts "You made it out! Congrats!"
 
 ```rb
 puts "You must guess the Magic Words to exit the while loop!"
+# Break from the loop only if the input matches "Magic Words"
 loop do
-  puts "What are the Magic Words?"
-  input = gets.chomp
-  break if input == "Magic Words"
+    puts "What are the Magic Words?"
+    input = gets.chomp
+    break if input.downcase == "Magic Words".downcase
 end
 puts "You made it out! Congrats!"
 ```
@@ -138,12 +144,14 @@ puts "You made it out! Congrats!"
 
 ```rb
 users = ["Alice", "Bob", "Carol"]
+# Loop around the array's length times
+# the index is the element in question in each iteration
 users.length.times do |index|
-  puts users[index]  
+    puts users[index]
 end
 ```
-> [**Further Reading on Ruby loops**](http://www.tutorialspoint.com/ruby/ruby_loops.htm)
 
+> [**Further Reading on Ruby loops**](http://www.tutorialspoint.com/ruby/ruby_loops.htm)
 
 ### Exercise: Practice Each (15 minutes)
 
@@ -155,10 +163,26 @@ Use `each` to do the following...
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
   ```
 
+  Solution:
+
+  ```rb
+  names.each {|name| puts "Hello #{name}!"}
+  ```
+
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+  ```
+
+  Solution
+
+  ```rb
+  # Loop around the array
+  numbers.each do |num|
+    # Access each element and print its value squared
+    p num ** 2
+  end
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -169,11 +193,31 @@ Use `each` to do the following...
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
   ```
 
+  Solution
+
+  ```rb
+  # Loop around the array
+  fahrenheit_temps.each do |temp|
+    # Apply the calculation on each element
+    puts((temp - 32) * 5 / 9)
+  end
+  ```
+
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
 
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
+  ```
+
+  Solution
+
+  ```rb
+  # Loop around artists array
+  artists.each do |elem|
+    # push each element in question to the end of ninja_turtles array
+    ninja_turtles.push elem
+  end
   ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
@@ -182,6 +226,33 @@ Use `each` to do the following...
   flavors = [ "vanilla", "chocolate", "strawberry", "butter pecan", "cookies and cream", "rainbow" ]
   toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
   ```
+
+  Solution
+
+  ```rb
+  # Outer loop to iterate through flavors array
+  flavors.each do |flavor|
+    # Inner loop to iterate through toppings array
+    toppings.each do |topping|
+        # Print the outer loop's element in question with the each of the inner loop's elements
+        p "#{flavor} #{topping}"
+    end
+  end
+  ```
+
+  Another solution
+
+  ```rb
+  # Combine the two arrays
+  flavors_toppings = flavors.product(toppings)
+  # Iterate through the new array
+  flavors_toppings.each do |elem|
+    # Each element of the array is considered an array that contains an element from the flavors array and an element from the toppings array
+    # Join the elements of the inner array and print them out
+    p elem.join " "
+  end
+  ```
+  
 <details>
   <summary>
     Hint
@@ -197,9 +268,11 @@ Run these two snippets separately:
 
 ```rb
 cart = ["shoes", "watch", "computer"]
+# Loop around the cart array and print each product upper-cased and return the element in question into the new array (uppercase)
 uppercase = cart.each do |product|
   caps_product = product.upcase
   puts caps_product
+  # The next line is ignored here
   caps_product
 end
 puts uppercase.join(", ")
@@ -207,6 +280,8 @@ puts uppercase.join(", ")
 
 ```rb
 cart = ["shoes", "watch", "computer"]
+# Loop around the cart array and print each product upper-
+# Return a new array with the results
 uppercase = cart.map do |product|
   caps_product = product.upcase
   puts caps_product
@@ -216,8 +291,9 @@ puts uppercase.join(", ")
 ```
 
 How would you explain the difference in the result?
-```
 
+```
+The map method returns a new array (uppercase) with the results but it won't change the original array. While, each method returns the original, unchanged element or object.
 ```
 
 #### Explore 2
@@ -227,19 +303,22 @@ Consider:
 ```ruby
 cart = ["shoes", "watch", "computer"]
 uppercase = []
+# Loop around the cart array, upper case each product and push it into uppercase array
 cart.each{|product| uppercase.push(product.upcase) }
 puts uppercase.join(", ")
 ```
 
 ```rb
 cart = ["shoes", "watch", "computer"]
+# return a copy of the cart array with each of the products upper-cased
 uppercase = cart.map{|product| product.upcase }
 puts uppercase.join(", ")
 ```
 
 What is the difference in the result of these two snippets?
-```
 
+```
+The first snippet with each method loops around the cart array and upper case each product, then it pushes it to the end of the uppercase array. In contrast, map method returns a copy of the original array, and iterate through the products and upper case them, but the original array is unchanged!
 ```
 
 #### Explore 3: Bang
@@ -256,8 +335,9 @@ puts uppercase
 Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
-```
 
+```
+It forces the change on the original content.
 ```
 
 ```rb
@@ -268,8 +348,9 @@ puts uppercase
 ```
 
 What's the difference between `.map` and `.map!`?
-```
 
+```
+The bang forces the change on the original array, so the original array's products will be upper cased too.
 ```
 
 ### Exercise: Practice Map (15 minutes)
@@ -284,12 +365,32 @@ Use `map` to do the following...
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
   ```
 
+  Solution
+
+  ```rb
+  # Create a new array that contains a copy of first_names
+  # Append "Duck" to each element and return it
+  duck_names = first_names.map{ |name| "#{name} Duck"}
+  puts duck_names
+  ```
+
 2. Create an array containing the squared values of every number in this array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
 
   # => [1, 9, 81, 121, 10000]
+  ```
+
+  Solution
+
+  ```rb
+  # Create an array to hold squared numbers by copying the numbers array
+  squared_numbers = numbers.map do |num|
+    # return the each element (number) squared
+    num ** 2
+  end
+  puts squared_numbers
   ```
 
 3. Create an array with the Celsius values for these Fahrenheit values.
@@ -300,4 +401,15 @@ Use `map` to do the following...
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
 
   #=> [-89.2, -17.8, 0, 60, 100]
+  ```
+
+  Solution
+
+  ```rb
+  fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+  # Copy the fahrenheit_temps array into a new array
+  celsius_temps = fahrenheit_temps.map do |temp|
+    # convert each fahrenheit temperature into celsius and return it
+    (temp - 32) * 5 / 9
+  end
   ```
