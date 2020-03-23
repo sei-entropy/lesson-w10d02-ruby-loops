@@ -153,12 +153,16 @@ Use `each` to do the following...
 
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+
+  names.each {|index| p "Hello #{index}"}
   ```
 
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+
+  numbers.each{|square| p Math.sqrt(square)}
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -167,6 +171,8 @@ Use `each` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+
+  fahrenheit_temps.each{|f| p (f - 32 )* 5/9 }
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
@@ -174,6 +180,11 @@ Use `each` to do the following...
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
+
+    artists.each do |f|
+    ninja_turtles.push(f)
+    end
+    p ninja_turtles
   ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
@@ -181,6 +192,11 @@ Use `each` to do the following...
   ```ruby
   flavors = [ "vanilla", "chocolate", "strawberry", "butter pecan", "cookies and cream", "rainbow" ]
   toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
+
+  c = flavors.product(toppings)
+  p c 
+
+  # i will try with each
   ```
 <details>
   <summary>
@@ -216,6 +232,9 @@ puts uppercase.join(", ")
 ```
 
 How would you explain the difference in the result?
+the each retrun the origin array 
+
+and the map return new array with new element upcase
 ```
 
 ```
@@ -238,6 +257,8 @@ puts uppercase.join(", ")
 ```
 
 What is the difference in the result of these two snippets?
+
+the result is the same the diffrent is just in the each loop we create new array to store the new element 
 ```
 
 ```
@@ -257,7 +278,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
-
+will change the origin array to the new one and stroed
 ```
 
 ```rb
@@ -269,7 +290,9 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
+the first will just do some change without touch the origin array
 
+the second will change the origin array and stored with the new one
 ```
 
 ### Exercise: Practice Map (15 minutes)
@@ -281,6 +304,9 @@ Use `map` to do the following...
   ```ruby
   first_names = [ "Donald", "Daisy", "Daffy" ]
 
+   add_dock = first_names.map{|name| "#{name} Duck"}
+    p add_dock
+
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
   ```
 
@@ -289,6 +315,8 @@ Use `map` to do the following...
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
 
+   square_number = numbers.map{|s| Math.sqrt(s)}
+    p square_number
   # => [1, 9, 81, 121, 10000]
   ```
 
@@ -298,6 +326,8 @@ Use `map` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+   c = fahrenheit_temps.map{|f| (f - 32) * 5 / 9}
 
+   p c
   #=> [-89.2, -17.8, 0, 60, 100]
   ```
