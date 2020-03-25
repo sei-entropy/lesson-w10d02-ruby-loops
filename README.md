@@ -311,6 +311,12 @@ duck = first_names.map do |name|
     "#{name} Duck!"
 end
 p duck
+
+or :
+
+first_names.map do |name|
+  p "#{name} Duck"
+end
 #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
 
 ```
@@ -323,6 +329,13 @@ squared_values = numbers.map do |num|
     "#{num **2}"
 end
 p squared_values
+
+or :
+
+numbers.map do |num|
+  p num ** 2
+end
+
 # => [1, 9, 81, 121, 10000]
 ```
 
@@ -332,10 +345,16 @@ p squared_values
 
 ```ruby
 fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
-fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+
 new_fahrenheit_temps = fahrenheit_temps.map do |temps|
     p "#{(temps-32) * 5.to_f / 9.to_f}"
 end
 p new_fahrenheit_temps
+
+or :
+
+fahrenheit_temps.map do |temps|
+    p ( (temps - 32) * 5 / 9 )
+end
 #=> [-89.2, -17.8, 0, 60, 100]
 ```
