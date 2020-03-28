@@ -195,13 +195,11 @@ Use `each` to do the following...
   flavors = [ "vanilla", "chocolate", "strawberry", "butter pecan", "cookies and cream", "rainbow" ]
   toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
 
-  flavors = [ "vanilla", "chocolate", "strawberry", "butter pecan", "cookies and cream", "rainbow" ]
-  toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
-  flavors.each do |falv|
-    toppings.each do |topp|
-        p "#{falv} comes with #{topp}"
-    end
-  end
+flavors.each do |flavors|
+  toppings.each do |toppings|
+  p "ice cream #{flavors} with #{toppings}"
+end
+end
 
   ```
 
